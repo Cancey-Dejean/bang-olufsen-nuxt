@@ -67,3 +67,34 @@ onBeforeUnmount(() => {
     </Container>
   </div>
 </template>
+
+<style>
+.main-search,
+.main-search::backdrop {
+  transition:
+    500ms opacity,
+    500ms overlay allow-discrete,
+    500ms display allow-discrete;
+  opacity: 0;
+}
+
+.main-search::backdrop {
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+}
+
+.main-search:popover-open {
+  opacity: 1;
+}
+
+.main-search:popover-open::backdrop {
+  opacity: 1;
+}
+
+@starting-style {
+  .main-search:popover-open,
+  .main-search:popover-open::backdrop {
+    opacity: 0;
+  }
+}
+</style>

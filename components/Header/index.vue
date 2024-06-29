@@ -88,7 +88,7 @@ const showSearchButton = computed(() => {
             />
             <span
               class="absolute bottom-[4px] left-1/2 -translate-x-1/2 opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100"
-              >Account</span
+              >Search</span
             >
           </button>
 
