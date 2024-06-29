@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { ref, computed } from "vue";
+import { useRoute } from "vue-router";
 const menuList = [
   { url: "/speakers", label: "Speakers" },
   { url: "/headphones", label: "Headphones" },
@@ -8,6 +10,8 @@ const menuList = [
   { url: "/world-of-bo", label: "World of B&O" },
 ];
 
+const route = useRoute();
+
 const showSearchBox = ref(false);
 function handleMenu() {
   alert("Menu");
@@ -16,6 +20,10 @@ function handleMenu() {
 function handleSearch() {
   showSearchBox.value = !showSearchBox.value;
 }
+
+const showSearchButton = computed(() => {
+  return !route.query.q; // Return true if the search query parameter is not present
+});
 </script>
 
 <template>
@@ -54,6 +62,7 @@ function handleSearch() {
             type="button"
             class="group relative h-full text-center text-[10px]"
             @click="handleSearch"
+            v-if="showSearchButton"
           >
             <NuxtImg
               src="/icon_search.svg"
@@ -79,7 +88,7 @@ function handleSearch() {
             />
             <span
               class="absolute bottom-[4px] left-1/2 -translate-x-1/2 opacity-0 transition-all duration-300 ease-in-out group-hover:opacity-100"
-              >Search</span
+              >Account</span
             >
           </button>
 

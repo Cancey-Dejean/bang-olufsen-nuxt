@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import { ref } from "vue";
+import { ref, onMounted, onBeforeUnmount } from "vue";
 import { useRouter } from "vue-router";
 import { Input } from "@/components/ui/input";
+import Container from "@/components/Container.vue";
+
 const query = ref("");
 const router = useRouter();
 const showSearchBox = ref(true);
@@ -10,7 +12,6 @@ const searchBoxRef = ref<HTMLElement | null>(null);
 function onSubmit() {
   // Hide the search box
   showSearchBox.value = false;
-
   router.push({ path: "/search", query: { q: query.value } });
 }
 
